@@ -86,3 +86,19 @@ MyeventEmitter.on('open',function(){
 MyeventEmitter.on('close',function(){
     console.log("file closed");
 })
+
+//Global Objects
+console.log('__filename'); //for file direction 
+setInterval(function(){
+    console.log("delay by 2000ms")
+},2000);
+//other global 
+//console
+//process
+//buffer
+//setInterval
+//setImmediate
+//setTimeout
+//clear setInterval
+//clear setImmediate
+//clear setTimeout
