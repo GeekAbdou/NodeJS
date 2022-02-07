@@ -70,3 +70,19 @@ let MyeventEmitter = new event.EventEmitter();
 MyeventEmitter.on('upload', function(){
     console.log('uploading file');
 })
+//example .Emit
+MyeventEmitter.emit('upload!')
+//Events Example 
+fs.readFile('data.txt',function(err,data){
+    MyeventEmitter.emit('open');
+    if(err) throw err;
+    console.log(data.toString());
+    MyeventEmitter.emit('close');
+});
+//Now creating the emits 
+MyeventEmitter.on('open',function(){
+    console.log("file opened");
+})
+MyeventEmitter.on('close',function(){
+    console.log("file closed");
+})
