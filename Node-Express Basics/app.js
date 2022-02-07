@@ -2,13 +2,7 @@
 let http = require('http');
 const port = 3001;
 
-http.createServer(function(req,res){
-    res.writeHead(200,{'Content-Type' : 'text/plain'});
-    res.write('Hello  World!');
-    res.end();
-
-}).listen(port);
-
+/*
 //filesytem edit
 let fs = require('fs')
 //Read from async func
@@ -20,7 +14,6 @@ fs.readFile('data.txt',function(err,data){
 })
 
 //Read from sync func
-/*
 fs.readFileSync('data.txt',function(err,data){
     if(err) throw err;
     console.log('sync read : ' + data.toString());
@@ -57,6 +50,8 @@ fs.unlink('data.txt',function(err){
     console.log('file deleted!');
 })
 */
+//==============================================
+/*
 //URL parsin
 let url = require('url');
 let adrs = 'https://google.com';
@@ -86,7 +81,9 @@ MyeventEmitter.on('open',function(){
 MyeventEmitter.on('close',function(){
     console.log("file closed");
 })
-
+*/
+//=========================================
+/*
 //Global Objects
 console.log('__filename'); //for file direction 
 setInterval(function(){
@@ -102,3 +99,10 @@ setInterval(function(){
 //clear setInterval
 //clear setImmediate
 //clear setTimeout
+
+*/
+//os module
+const os = require('os');
+let CPU = os.cpus();
+
+console.log(CPU);
