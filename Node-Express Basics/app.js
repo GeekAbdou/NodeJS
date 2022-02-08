@@ -112,7 +112,10 @@ console.log(CPU);
 //many other easy examples
 */
 
+
+/*
 //Stream and buffer
+
 let readStream = fs.createReadStream("./data.txt");
 let writeStream = fs.createWriteStream("./newFile.txt");
 
@@ -120,3 +123,28 @@ readStream.on("data", (chunk)=> {
   console.log("new chunk");
   writeStream.write(chunk);
 });
+
+readStream.pipe(writeStream)
+*/
+
+//Date Example 
+function clock(){
+    let date = new Date();
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let sec = date.getSeconds();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let year = date.getFullYear();
+
+    let f = " AM";
+    if(hour > 12 ){
+        hour = hour - 12;
+        f = " PM";
+    } 
+    hour = (hour < 10 ? "0" : "") + hour;
+    min = (min < 10 ? "0" : "") + min;
+    sec = (sec < 10 ? "0" : "") + sec;
+    console.log("Today is " + day + "/" + month + "/" + year + " at " + hour + ":" + min + ":" + sec + f);
+}
+setInterval(clock,1000);
