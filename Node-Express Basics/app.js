@@ -127,6 +127,8 @@ readStream.on("data", (chunk)=> {
 readStream.pipe(writeStream)
 */
 
+
+/*
 //Date Example 
 function clock(){
     let date = new Date();
@@ -148,3 +150,5 @@ function clock(){
     console.log("Today is " + day + "/" + month + "/" + year + " at " + hour + ":" + min + ":" + sec + f);
 }
 setInterval(clock,1000);
+*/
+
