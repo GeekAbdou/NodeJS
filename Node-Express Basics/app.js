@@ -1,5 +1,6 @@
 //Http sev connection
-let http = require('http');
+const fs = require("fs");
+let http = require("http");
 const port = 3001;
 
 /*
@@ -101,8 +102,21 @@ setInterval(function(){
 //clear setTimeout
 
 */
+
+/*
 //os module
 const os = require('os');
 let CPU = os.cpus();
-
+let platform 
 console.log(CPU);
+//many other easy examples
+*/
+
+//Stream and buffer
+let readStream = fs.createReadStream("./data.txt");
+let writeStream = fs.createWriteStream("./newFile.txt");
+
+readStream.on("data", (chunk)=> {
+  console.log("new chunk");
+  writeStream.write(chunk);
+});
