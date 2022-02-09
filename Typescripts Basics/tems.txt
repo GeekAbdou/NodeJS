@@ -1,0 +1,6 @@
+Term 	Definition
+Access Modifier 	Used in classes to declare how a property or method can be accessed from the application
+Duck typing 	A programming paradigm where if two or more structures (functions, interfaces, objects) have the same properties, they can be used interchangeably regardless of any type declarations
+Enumerated type 	A set of constants that are automatically indexed and can be called by their name or index
+Interface 	Used as a blueprint to declare the shape of something reuseable such as functions, objects, and classes
+Tuple 	A data type of an array with a set number of values where all value types are known
