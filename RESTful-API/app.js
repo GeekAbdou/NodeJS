@@ -1,20 +1,16 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const app = express();
-const port = 3000;
+const express = require('express')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const app = express()
+const port = 3000
+const booksRouter = require('./routes/booksRouter')
+mongoose.connect('mongodb://localhost:27017/bookStore', {useNewUrlParser: true})
 
-const bookRouter = require('./routes/booksRouter');
+app.use(logger('dev'))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
 
-mongoose.connect('mongodb://localhost:27017/bookStoreDB');
+app.use('/api/books', booksRouter)
 
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-
-app.use('/APIBooks',bookRouter)
-
-app.listen(port, ()=> {
-    console.log(`http://localhost:${port}`);
-});
+app.listen(port, ()=>{ console.log(`http://localhost:${port}`)})
