@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "npm run build && nodemon src/main.js",
+    "start": "npm run build && nodemon dist/main.js",
     "dev": "nodemon src/main.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix"
@@ -15,10 +15,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jasmine": "^3.10.3",
+    "@types/supertest": "^2.0.11",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "jasmin": "0.0.2",
+    "jasmine": "^4.0.2",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
+    "supertest": "^6.2.2",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
   },
