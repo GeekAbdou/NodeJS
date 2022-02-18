@@ -1,12 +1,13 @@
 import express, { Application, Request, Response } from 'express'
-import morgan from 'morgan'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
+import morgan from 'morgan'
+import errorMiddleware from './middleware/error'
 
 const PORT = 3000
 // create an instance server
 const app: Application = express()
-// Middleware to parses incoming requests with JSON payloads and is based on body-parser.
+// Middleware to parses incoming requests with JSON payloads and is based on body-parser(as body-parser is now build in express).
 app.use(express.json())
 // HTTP request logger middleware
 app.use(morgan('common'))
@@ -27,15 +28,18 @@ app.use(
 // add routing for / path
 app.get('/', (req: Request, res: Response) => {
   res.json({
-    message: 'Hello World 🌍',
+    message: 'welcome',
   })
 })
 
+// error handler
 app.use((_: Request, res: Response) => {
   res.status(404).json({
     message: '404 Not found',
   })
 })
+// error handler middleware
+app.use(errorMiddleware)
 
 // start express server
 app.listen(PORT, () => {
