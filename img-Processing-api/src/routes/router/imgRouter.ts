@@ -29,7 +29,7 @@ imageRouter.get('/', async (req, res): Promise<void> => {
         `../../../img/thumb/${filename}-${height}x${width}.jpg`
     )}`
 
-    //Error Handeling
+    //Error Handeling (Unhandled promise rejection appears randomly if not make considerations )
     const fullImage: Stats | null = await fs.stat(pathFullImage).catch(() => {
         res.status(404).send(
             'Image Not Found Please Check Image Name and remove any extensions like (.jpg) and check if the image is JPG Image finally check removing  from the Paramters'
@@ -39,6 +39,10 @@ imageRouter.get('/', async (req, res): Promise<void> => {
 
     if (!filename || !height || !width) {
         res.status(400).send('Please Check URL Parameters')
+        return
+    }
+
+    if (!fullImage) {
         return
     }
 

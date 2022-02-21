@@ -12,33 +12,28 @@ describe('Test GET /api/images Router', () => {
     //Error Tests
     it('Error 404 if image not found', async () => {
         const response = await request.get(
-            '/api/images?filename=test&height=10&width=10'
+            '/api/images?filename=noIMGtest&height=10&width=10'
         )
         expect(response.status).toBe(404)
     })
 
-    it('Error 400 if missing parameters', async () => {
+    it('Error 400 if missing parameters width but the img is exsisting', async () => {
         const response = await request.get(
-            '/api/images?filename=test&height=10'
+            '/api/images?filename=okTest&height=10'
         )
-        expect(response.status).toBe(404)
+        expect(response.status).toBe(400)
     })
 
-    it('Error 400 if missing parameters', async () => {
+    it('Error 400 if missing parameters height but the img is exsisting', async () => {
         const response = await request.get(
-            '/api/images?filename=test&height=10'
+            '/api/images?filename=okTest&width=10'
         )
-        expect(response.status).toBe(404)
+        expect(response.status).toBe(400)
     })
 
-    it('Error 400 if missing parameters', async () => {
-        const response = await request.get('/api/images?filename=test')
-        expect(response.status).toBe(404)
-    })
-
-    it('Error 400 if missing parameters', async () => {
-        const response = await request.get('/api/images?filename=test&width=10')
-        expect(response.status).toBe(404)
+    it('Error 400 if no parameters but the img is existing', async () => {
+        const response = await request.get('/api/images?filename=okTest')
+        expect(response.status).toBe(400)
     })
 
     //OK tests
@@ -49,7 +44,7 @@ describe('Test GET /api/images Router', () => {
         expect(response.status).toBe(200)
     })
 
-    it('Test API functionality', (oK): void => {
+    it('Test API Return functionality', (oK): void => {
         request
             .get('/api/images/?filename=okTest&height=200&width=400')
             .then(() => {
